@@ -1,0 +1,280 @@
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+.container {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+#baeminLogo {
+    width: 231px;
+    height: 70px;
+    background-image: url("https://img.woowahan.com/www/common/logo-bm-v2@2.png");
+    z-index: 99;
+    display: inline-block;
+    text-indent: -9999px;
+}
+
+.header {
+    height: 30px;
+    width: 100%;
+    text-align: right;
+    line-height: 30px;
+}
+
+.header > span {
+    font-size: 12px;
+}
+
+.head-content {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.form-wrapper {
+    display: inline-block;
+}
+
+#searchForm {
+    margin: 0 auto;
+}
+
+#queryInput {
+    border: 1px solid #c5c5c5;
+    height: 40px;
+    padding: 8px;
+    font-size: 16px;
+    box-shadow: inset 1px 1px 0 0 #f5f5f5;
+    float: left;
+}
+
+#queryBtn {
+    height: 40px;
+    background-image: url("https://img.woowahan.com/www/common/btn-srch.png");
+    float: left;
+}
+
+.hungry-wrapper {
+    margin: 30px 2%;
+    clear: both;
+    width: 100%;
+}
+
+.hungry {
+    width: 16%;
+    height: 170px;
+    float: left;
+}
+
+#menu01 {
+    background-image: url("https://img.woowahan.com/www/main/cate01.png");
+    background-size: 90%;
+    background-repeat: no-repeat;
+}
+
+#menu01:hover {
+    background-image: url("https://img.woowahan.com/www/main/cate01-over.png");
+}
+
+#menu02 {
+    background-image: url("https://img.woowahan.com/www/main/cate02.png");
+    background-size: 90%;
+    background-repeat: no-repeat;
+}
+
+#menu02:hover {
+    background-image: url("https://img.woowahan.com/www/main/cate02-over.png");
+}
+
+#menu03 {
+    background-image: url("https://img.woowahan.com/www/main/cate03.png");
+    background-size: 90%;
+    background-repeat: no-repeat;
+}
+
+#menu03:hover {
+    background-image: url("https://img.woowahan.com/www/main/cate03-over.png");
+}
+
+#menu04 {
+    background-image: url("https://img.woowahan.com/www/main/cate04.png");
+    background-size: 90%;
+    background-repeat: no-repeat;
+}
+
+#menu04:hover {
+    background-image: url("https://img.woowahan.com/www/main/cate04-over.png");
+}
+
+#menu05 {
+    background-image: url("https://img.woowahan.com/www/main/cate05.png");
+    background-size: 90%;
+    background-repeat: no-repeat;
+}
+
+#menu05:hover {
+    background-image: url("https://img.woowahan.com/www/main/cate05-over.png");
+}
+
+#menu06 {
+    background-image: url("https://img.woowahan.com/www/main/cate06.png");
+    background-size: 90%;
+    background-repeat: no-repeat;
+}
+
+#menu06:hover {
+    background-image: url("https://img.woowahan.com/www/main/cate06-over.png");
+}
+
+#menu07 {
+    background-image: url("https://img.woowahan.com/www/main/cate07.png");
+    background-size: 90%;
+    background-repeat: no-repeat;
+}
+
+#menu07:hover {
+    background-image: url("https://img.woowahan.com/www/main/cate07-over.png");
+}
+
+#menu08 {
+    background-image: url("https://img.woowahan.com/www/main/cate08.png");
+    background-size: 90%;
+    background-repeat: no-repeat;
+}
+
+#menu08:hover {
+    background-image: url("https://img.woowahan.com/www/main/cate08-over.png");
+}
+
+#menu09 {
+    background-image: url("https://img.woowahan.com/www/main/cate09.png");
+    background-size: 90%;
+    background-repeat: no-repeat;
+}
+
+#menu09:hover {
+    background-image: url("https://img.woowahan.com/www/main/cate09-over.png");
+}
+
+#menu10 {
+    background-image: url("https://img.woowahan.com/www/main/cate10.png");
+    background-size: 90%;
+    background-repeat: no-repeat;
+}
+
+#menu10:hover {
+    background-image: url("https://img.woowahan.com/www/main/cate10-over.png");
+}
+
+#menu11 {
+    background-image: url("https://img.woowahan.com/www/main/cate11.png");
+    background-size: 90%;
+    background-repeat: no-repeat;
+}
+
+#menu11:hover {
+    background-image: url("https://img.woowahan.com/www/main/cate11-over.png");
+}
+
+#menu12 {
+    background-image: url("https://img.woowahan.com/www/main/cate12.png");
+    background-size: 90%;
+    background-repeat: no-repeat;
+}
+
+#menu12:hover {
+    background-image: url("https://img.woowahan.com/www/main/cate12-over.png");
+}
+
+.board {
+    width: 45%;
+    height: 200px;
+    float: left;
+    margin: 2.5%;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.board > h3 {
+    height: 20px;
+    line-height: 20px;
+    padding: 10px 0;
+}
+
+.board > span {
+    position: absolute;
+    right: 0;
+    top: 48%;
+    font-size: 70%;
+    color: darkgray;
+}
+
+.board > p {
+    color: #4d4d4d;
+    font-size: 80%;
+    clear: both;
+}
+
+.board > img {
+    position: absolute;
+    right :0;
+    top: 40%;
+}
+
+.footer {
+    width: 100%;
+    border-top: 1px solid lightgray;
+    margin: 20px auto;
+    clear: both;
+    height: 100px;
+    font-size: 70%;
+}
+
+.footer-content {
+    padding: 20px;
+    width: 50%;
+    float: left;;
+}
+
+.footer-content > small {
+    color: lightgray;
+}
+
+.board > h3 {
+    display: inline-block;
+}
+
+.board > h4 > span {
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+.more-btn {
+    float: right;
+    margin-top: 20px;
+    margin-right: 10px;
+    background-color: whitesmoke;
+}
+
+.app-down-btn {
+    float: right;
+    margin-top: 20px;
+    margin-right: 10px;
+    background-color: #0a0a0a;
+    color: whitesmoke;
+}
