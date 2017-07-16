@@ -25,6 +25,12 @@
                 <li><span>following : </span><span class="count"><span>30</span><span> </span></span><span> </span>
                 </li>
             </ul>
+            <div class="userMessage">
+                <button class="blog-ajax-btn">블로그 불러오기</button>
+                <button class="blog-ajax-iter-btn">블로그 Iter 불러오기</button>
+            </div>
+            <ul class="userSNSInfo" id="blogList">
+            </ul>
         </header>
         <nav id="navigation">
             <div class="tab selectedTab" id="position">About ME
@@ -51,6 +57,37 @@
     </div>
 </div>
 <script src="http://underscorejs.org/underscore.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+<script id="blogListTemplate" type="text/x-handlebars-template">
+    <div>게시자 : {{name}}</div>
+    <div class="content">{{content}}</div>
+    <div>좋아요 갯수 <span> {{like}} </span></div>
+    <div class="comment">
+        <div>{{comment}}</div>
+    </div>
+</script>
+<script id="blogIterTemplate" type="text/x-handlebars-template">
+    <ul>
+        {{#each this}}
+        <li>
+            <div>게시자 : {{name}}</div>
+            <div class="content">{{content}}</div>
+            <div>
+                {{#if like}}
+                좋아요 갯수 <span> {{like}} </span>
+                {{else}}
+                좋아요가 없어요 ㅠㅠ
+                {{/if}}
+            </div>
+            {{#each comment}}
+            <div class="comment">
+                <div>{{this}}</div>
+            </div>
+            {{/each}}
+        </li>
+        {{/each}}
+    </ul>
+</script>
 <script src="app.js"></script>
 </body>
 </html>

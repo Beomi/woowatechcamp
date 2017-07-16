@@ -14,14 +14,16 @@ document.addEventListener('DOMContentLoaded', function () {
             setValues(newSelection)
         }
     })
+    const ud = new updateDocument()
+
     const section = document.querySelector('section')
     setValues(section)
 
     const blogBtn = document.querySelector('.blog-ajax-btn')
-    blogBtn.addEventListener('click', loadBlogData)
+    blogBtn.addEventListener('click', ud.loadBlogData)
 
     const blogIterBtn = document.querySelector('.blog-ajax-iter-btn')
-    blogIterBtn.addEventListener('click', loadIterBlogData)
+    blogIterBtn.addEventListener('click', ud.loadIterBlogData)
 })
 
 // Ajax Call with url, callback function
@@ -46,54 +48,50 @@ function setValues(section) {
     }
 }
 
-// click event listener:
-// set Inner values through ajax call
-function loadBlogData() {
-    ajax('/data.json', function () {
-        const json = JSON.parse(this.responseText)
-        setBlogData(json)
-    })
-}
 
-// return HTML rendered template
-function renderTemplate(jsonObject, templateSelector) {
-    const template = document.querySelector(templateSelector).innerHTML
-    const templateScript = Handlebars.compile(template)
-    return templateScript(jsonObject)
-}
+class updateDocument {
+    loadBlogData() {
+        ajax('/data.json', function () {
+            const json = JSON.parse(this.responseText)
+            updateDocument.setBlogData(json)
+        })
+    }
 
-// callBack from setBlogData()
-function setHtmlBlogData(jsonObject) {
-    const html = renderTemplate(jsonObject, '#blogListTemplate')
-    const blogList = document.querySelector('#my_position')
-    const li = document.createElement('li')
-    li.innerHTML = (html)
-    blogList.appendChild(li)
-}
+    static renderTemplate(jsonObject, templateSelector) {
+        const template = document.querySelector(templateSelector).innerHTML
+        const templateScript = Handlebars.compile(template)
+        return templateScript(jsonObject)
+    }
 
-// callback from loadBlogData(), loops with underscore
-function setBlogData(jsonArray) {
-    _.each(
-        jsonArray,
-        function (jsonObject) {
-            setHtmlBlogData(jsonObject)
-        }
-    )
-}
+    static setHtmlBlogData(jsonObject) {
+        const html = updateDocument.renderTemplate(jsonObject, '#blogListTemplate')
+        const blogList = document.querySelector('#my_position')
+        const li = document.createElement('li')
+        li.innerHTML = (html)
+        blogList.appendChild(li)
+    }
 
-// click event Listener:
-// prevent cache from browser with timestamp
-function loadIterBlogData() {
-    const timeStamp = Date.now()
-    ajax('/data.json?_='+timeStamp, function () {
-        const json = JSON.parse(this.responseText)
-        setIterBlogData(json)
-    })
-}
+    static setBlogData(jsonArray) {
+        _.each(
+            jsonArray,
+            function (jsonObject) {
+                updateDocument.setHtmlBlogData(jsonObject)
+            }
+        )
+    }
 
-// loop in template engine
-function setIterBlogData(jsonArray) {
-    const html = renderTemplate(jsonArray, '#blogIterTemplate')
-    const blogList = document.querySelector('#my_friend')
-    blogList.innerHTML = html
+    loadIterBlogData() {
+        const timeStamp = Date.now()
+        ajax('/data.json?_=' + timeStamp, function () {
+            const json = JSON.parse(this.responseText)
+            updateDocument.setIterBlogData(json)
+        })
+    }
+
+    static setIterBlogData(jsonArray) {
+        const html = updateDocument.renderTemplate(jsonArray, '#blogIterTemplate')
+        const blogList = document.querySelector('#my_friend')
+        blogList.innerHTML = html
+    }
+
 }
