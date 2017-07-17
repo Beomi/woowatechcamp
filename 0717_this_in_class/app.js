@@ -39,7 +39,7 @@ class updateDocument {
     setValues(section) {
         const sectionId = section.dataset.pk
         if (!section.innerText) {
-            this.ajax('http://jsonplaceholder.typicode.com/posts/' + sectionId, function (xhr) {
+            this.ajax('//jsonplaceholder.typicode.com/posts/' + sectionId, function (xhr) {
                 const json = JSON.parse(this.responseText)
                 const template = _.template(
                     "<h2><%= title %></h2><p><%= body %></p>"
