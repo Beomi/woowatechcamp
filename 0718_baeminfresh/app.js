@@ -26,11 +26,11 @@ slidesPrev.addEventListener('click', function () {
     } else {
         newLI = oldLI.previousElementSibling
     }
-
     fadeOut(oldLI)
     fadeIn(newLI)
     newLI.style.display = ''
     newLI.style.zIndex = 50
+
     oldLI.style.zIndex = 0
     oldLI.style.display = 'none'
 })
@@ -44,7 +44,6 @@ slidesNext.addEventListener('click', function () {
     } else {
         newLI = oldLI.nextElementSibling
     }
-
     fadeOut(oldLI)
     fadeIn(newLI)
     newLI.style.display = ''
@@ -57,7 +56,7 @@ slidesNext.addEventListener('click', function () {
 function fadeOut(el) {
     el.style.opacity = 1;
     (function fade() {
-        if ((el.style.opacity -= .1) < 0) {
+        if ((el.style.opacity -= .03) < 0.3) {
             el.style.display = "none"
         } else {
             requestAnimationFrame(fade)
@@ -66,10 +65,10 @@ function fadeOut(el) {
 }
 
 function fadeIn(el) {
-    el.style.opacity = 0;
+    el.style.opacity = 0.5;
     (function fade() {
         let val = parseFloat(el.style.opacity)
-        if (!((val += .1) > 1)) {
+        if (!((val += .03) > 1)) {
             el.style.opacity = val
             requestAnimationFrame(fade)
         }
