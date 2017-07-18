@@ -12,6 +12,10 @@ function onLoadFunction() {
 }
 
 class updateDocument {
+    constructor () {
+        this.tabCount = {}
+    }
+
     onClickFunction (e) {
         if (!(e.target && e.target.matches('div.tab'))) {
             return false
@@ -27,6 +31,7 @@ class updateDocument {
         newSelection.classList.add('eleDisplayShow')
 
         this.setValues(newSelection)
+        this.setTabClickCount(selectedTab)
     }
 
     ajax(url, func) {
@@ -97,6 +102,19 @@ class updateDocument {
         blogList.innerHTML = html
     }
 
+    setTabClickCount(tab) {
+        const span = document.createElement('span')
+
+        if (this.tabCount[tab.getAttribute('id')]) {
+            this.tabCount[tab.getAttribute('id')] += 1
+        } else {
+            this.tabCount[tab.getAttribute('id')] = 1
+        }
+
+        span.innerHTML = '('+this.tabCount[tab.getAttribute('id')]+')'
+        // tab.removeChild(span)
+        tab.appendChild(span)
+    }
 }
 
 document.addEventListener('DOMContentLoaded', onLoadFunction)
