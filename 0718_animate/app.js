@@ -23,7 +23,8 @@ let nowPosition = 0
 const animate = () => {
     if (nowPosition > 400) return false
     animationDIV.style.transform = `translate(${nowPosition}px)`
-    nowPosition++
+    animationDIV.style.backgroundColor = `#${nowPosition}${nowPosition}`
+    nowPosition += 2
     requestAnimationFrame(animate);
 }
 
