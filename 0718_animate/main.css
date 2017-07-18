@@ -1,0 +1,14 @@
+#animation {
+    width: 200px;
+    height: 200px;
+    background-color: #1FB820;
+}
+
+#animation-run-btn {
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 10px;
+    background-color: whitesmoke;
+    border: none;
+}
