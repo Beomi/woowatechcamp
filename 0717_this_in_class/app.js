@@ -103,7 +103,7 @@ class updateDocument {
     }
 
     setTabClickCount(tab) {
-        const span = document.createElement('span')
+        const span = tab.children[0]
 
         if (this.tabCount[tab.getAttribute('id')]) {
             this.tabCount[tab.getAttribute('id')] += 1
@@ -112,8 +112,7 @@ class updateDocument {
         }
 
         span.innerHTML = '('+this.tabCount[tab.getAttribute('id')]+')'
-        // tab.removeChild(span)
-        tab.appendChild(span)
+
     }
 }
 
