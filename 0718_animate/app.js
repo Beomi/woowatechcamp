@@ -22,12 +22,11 @@ let nowPosition = 0
 
 const animate = () => {
     if (nowPosition > 400) return false
-    animationDIV.style.transform = 'translateX('+nowPosition+'px)'
+    animationDIV.style.transform = `translate(${nowPosition}px)`
     nowPosition++
     requestAnimationFrame(animate);
 }
 
 animationRunButton.addEventListener('click', () => {
     requestAnimationFrame(animate);
-    console.log('aaa')
 })
