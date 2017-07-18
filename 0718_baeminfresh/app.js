@@ -4,73 +4,75 @@ const slidesNext = document.querySelector('.slides_next')
 
 slidesPagination.addEventListener('click', function (e) {
     const targetId = Number(e.target.textContent) + 1
-    const oldLI = document.querySelector('.main_slides_lst > li:not([style*="display: none"])')
+    const oldLI = document.querySelector(".selected")
     const newLI = document.querySelector(`.s${targetId}`)
 
     if (oldLI === newLI) return false
-
-    fadeOut(oldLI)
-    fadeIn(newLI)
     newLI.style.display = ''
-    newLI.style.zIndex = 50
+    oldLI.style.display = ''
+
     oldLI.style.zIndex = 0
-    oldLI.style.display = 'none'
+    newLI.style.opacity = 0
+    oldLI.style.opacity = 1
+    fadeInOut(newLI, oldLI)
+    newLI.style.zIndex = 50
+    oldLI.classList.remove('selected')
+    newLI.classList.add('selected')
+
 })
 
 slidesPrev.addEventListener('click', function () {
-    const oldLI = document.querySelector('.main_slides_lst > li:not([style*="display: none"])')
+    const oldLI = document.querySelector(".selected")
+    const childElementCount = oldLI.parentElement.children
     let newLI
-    if (oldLI.className.replace('s', '') <= 1) {
-        const childElementCount = oldLI.parentElement.children
+    if (oldLI.className.replace('s', '').replace('selected', '') <= 1) {
         newLI = childElementCount[childElementCount.length - 1]
+        console.log(newLI)
     } else {
         newLI = oldLI.previousElementSibling
     }
-    fadeOut(oldLI)
-    fadeIn(newLI)
     newLI.style.display = ''
-    newLI.style.zIndex = 50
+    oldLI.style.display = ''
 
     oldLI.style.zIndex = 0
-    oldLI.style.display = 'none'
+    newLI.style.opacity = 0
+    oldLI.style.opacity = 1
+    fadeInOut(newLI, oldLI)
+    newLI.style.zIndex = 50
+    oldLI.classList.remove('selected')
+    newLI.classList.add('selected')
 })
 
 slidesNext.addEventListener('click', function () {
-    const oldLI = document.querySelector('.main_slides_lst > li:not([style*="display: none"])')
-    const childElementCount = oldLI.parentElement.children
+    const oldLI = document.querySelector(".selected")
+    const siblingElements = oldLI.parentElement.children
+    const childElementCountIndex = siblingElements.length
     let newLI
-    if (oldLI.className.replace('s', '') >= oldLI.parentElement.children.length) {
-        newLI = childElementCount[0]
+    if (oldLI.className.replace('s', '').replace('selected', '') >= childElementCountIndex) {
+        newLI = siblingElements[0]
     } else {
         newLI = oldLI.nextElementSibling
     }
-    fadeOut(oldLI)
-    fadeIn(newLI)
     newLI.style.display = ''
-    newLI.style.zIndex = 50
+    oldLI.style.display = ''
 
     oldLI.style.zIndex = 0
-    oldLI.style.display = 'none'
+    newLI.style.opacity = 0
+    oldLI.style.opacity = 1
+    fadeInOut(newLI, oldLI)
+    newLI.style.zIndex = 50
+    oldLI.classList.remove('selected')
+    newLI.classList.add('selected')
 })
 
-function fadeOut(el) {
-    el.style.opacity = 1;
+function fadeInOut(newLI, oldLI) {
     (function fade() {
-        if ((el.style.opacity -= .03) < 0.3) {
-            el.style.display = "none"
-        } else {
-            requestAnimationFrame(fade)
+        if (newLI.style.opacity < 1) {
+            newLI.style.opacity = parseFloat(newLI.style.opacity) + 0.05
         }
-    })();
-}
-
-function fadeIn(el) {
-    el.style.opacity = 0.5;
-    (function fade() {
-        let val = parseFloat(el.style.opacity)
-        if (!((val += .03) > 1)) {
-            el.style.opacity = val
-            requestAnimationFrame(fade)
+        if (oldLI.style.opacity > 0.2) {
+            oldLI.style.opacity = parseFloat(oldLI.style.opacity) - 0.05
         }
+        requestAnimationFrame(fade)
     })()
 }
