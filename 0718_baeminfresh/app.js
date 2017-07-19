@@ -13,8 +13,8 @@ slidesPagination.addEventListener('click', function (e) {
 
     oldLI.style.zIndex = 0
     newLI.style.opacity = 0
-    oldLI.style.opacity = 1
     fadeInOut(newLI, oldLI)
+    oldLI.style.opacity = 0
     newLI.style.zIndex = 50
     oldLI.classList.remove('selected')
     newLI.classList.add('selected')
@@ -36,8 +36,8 @@ slidesPrev.addEventListener('click', function () {
 
     oldLI.style.zIndex = 0
     newLI.style.opacity = 0
-    oldLI.style.opacity = 1
     fadeInOut(newLI, oldLI)
+    oldLI.style.opacity = 0
     newLI.style.zIndex = 50
     oldLI.classList.remove('selected')
     newLI.classList.add('selected')
@@ -58,8 +58,8 @@ slidesNext.addEventListener('click', function () {
 
     oldLI.style.zIndex = 0
     newLI.style.opacity = 0
-    oldLI.style.opacity = 1
     fadeInOut(newLI, oldLI)
+    oldLI.style.opacity = 0
     newLI.style.zIndex = 50
     oldLI.classList.remove('selected')
     newLI.classList.add('selected')
@@ -67,10 +67,10 @@ slidesNext.addEventListener('click', function () {
 
 function fadeInOut(newLI, oldLI) {
     (function fade() {
-        if (newLI.style.opacity <= 1) {
+        if (parseFloat(newLI.style.opacity) <= 1) {
             newLI.style.opacity = parseFloat(newLI.style.opacity) + 0.05
         }
-        if (oldLI.style.opacity >= 0.2) {
+        if (parseFloat(oldLI.style.opacity) >= 0) {
             oldLI.style.opacity = parseFloat(oldLI.style.opacity) - 0.05
         }
         requestAnimationFrame(fade)
