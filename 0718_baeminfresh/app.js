@@ -67,10 +67,10 @@ slidesNext.addEventListener('click', function () {
 
 function fadeInOut(newLI, oldLI) {
     (function fade() {
-        if (newLI.style.opacity < 1) {
+        if (newLI.style.opacity <= 1) {
             newLI.style.opacity = parseFloat(newLI.style.opacity) + 0.05
         }
-        if (oldLI.style.opacity > 0.2) {
+        if (oldLI.style.opacity >= 0.2) {
             oldLI.style.opacity = parseFloat(oldLI.style.opacity) - 0.05
         }
         requestAnimationFrame(fade)
