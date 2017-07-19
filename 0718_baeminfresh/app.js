@@ -2,6 +2,7 @@ const slidesPagination = document.querySelector('.slides_pagination')
 const slidesPrev = document.querySelector('.slides_prev')
 const slidesNext = document.querySelector('.slides_next')
 
+
 slidesPagination.addEventListener('click', function (e) {
     const targetId = Number(e.target.textContent) + 1
     const oldLI = document.querySelector(".selected")
@@ -23,7 +24,9 @@ slidesPrev.addEventListener('click', function () {
     fadeInOutWrapper(newLI, oldLI)
 })
 
-slidesNext.addEventListener('click', function () {
+slidesNext.addEventListener('click', arrowNext);
+
+function arrowNext() {
     const oldLI = document.querySelector(".selected")
     const siblingElements = oldLI.parentElement.children
     const childElementCountIndex = siblingElements.length
@@ -34,7 +37,7 @@ slidesNext.addEventListener('click', function () {
         newLI = oldLI.nextElementSibling
     }
     fadeInOutWrapper(newLI, oldLI)
-})
+}
 
 function fadeInOut(newLI, oldLI) {
     (function fade() {
@@ -59,3 +62,43 @@ function fadeInOutWrapper(newLI, oldLI) {
     oldLI.classList.remove('selected')
     newLI.classList.add('selected')
 }
+
+function autoPlay(a) {
+    if (slidesNext.click()){
+        return;
+    }
+        setInterval(arrowNext(), 2900);
+        setTimeout(() => {
+            autoPlay();
+        }, 3000);
+}
+
+// autoPlay();
+
+
+// Baemin Menus
+function transePosition(element, pixel) {
+    const currentPosition = element.style.transform.replace('translateX(','').replace('px)','')
+    const menuUnits = element.children.length
+    const lastPosition = -(860 * (menuUnits/4-1))
+    let newPosition = (pixel + Number(currentPosition)) % Number(860 * menuUnits/4)
+    if (newPosition > 0) newPosition = lastPosition
+    element.style.transform = `translateX(${newPosition}px)`
+}
+
+function nextMenu() {
+    const carouselInnerWrapper = document.querySelector('.carousel-inner-wrapper')
+    transePosition(carouselInnerWrapper, -860)
+}
+
+function beforeMenu () {
+    const carouselInnerWrapper = document.querySelector('.carousel-inner-wrapper')
+    transePosition(carouselInnerWrapper, 860)
+}
+
+document.querySelector('.carousel-left-btn').addEventListener(
+    'click', beforeMenu
+)
+document.querySelector('.carousel-right-btn').addEventListener(
+    'click', nextMenu
+)
