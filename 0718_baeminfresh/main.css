@@ -49,6 +49,7 @@
     border: none;
     font-size: 50px;
     font-weight: 200;
+    color: lightgray;
     z-index: 10;
 }
 

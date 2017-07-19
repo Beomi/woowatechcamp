@@ -236,7 +236,7 @@
     </div>
 </div>
 
-<h2 class="carousel-title">캐로우젤</h2>
+<h2 class="carousel-title">캐로우젤 without DOM</h2>
 
 <div class="carousel-outer-wrapper">
     <button class="carousel-btn carousel-left-btn">&lt;</button>
@@ -297,15 +297,8 @@
     <button class="carousel-btn carousel-right-btn">&gt;</button>
 </div>
 
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
-<script type="text/x-handlebars-template">
-    {{#each this}}
-    <div class="carousel-menu">
-        <img class="carousel-menu-image" src="https://via.placeholder.com/215x215">
-        <p class="carousel-menu-description">{{description}}</p>
-    </div>
-    {{/each}}
-</script>
 <script src="app.js"></script>
 
 </body>

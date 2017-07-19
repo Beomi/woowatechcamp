@@ -82,7 +82,9 @@ function transePosition(element, pixel) {
     const menuUnits = element.children.length
     const lastPosition = -(860 * (menuUnits/4-1))
     let newPosition = (pixel + Number(currentPosition)) % Number(860 * menuUnits/4)
-    if (newPosition > 0) newPosition = lastPosition
+    if (newPosition > 0) {
+        newPosition = lastPosition
+    }
     element.style.transform = `translateX(${newPosition}px)`
 }
 
