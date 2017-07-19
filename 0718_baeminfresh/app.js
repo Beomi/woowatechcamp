@@ -64,38 +64,55 @@ function fadeInOutWrapper(newLI, oldLI) {
 }
 
 function autoPlay(a) {
-    if (slidesNext.click()){
+    if (slidesNext.click()) {
         return;
     }
-        setInterval(arrowNext(), 2900);
-        setTimeout(() => {
-            autoPlay();
-        }, 3000);
+    setInterval(arrowNext(), 2900);
+    setTimeout(() => {
+        autoPlay();
+    }, 3000);
 }
 
 // autoPlay();
 
 
 // Baemin Menus
-function transePosition(element, pixel) {
-    const currentPosition = element.style.transform.replace('translateX(','').replace('px)','')
-    const menuUnits = element.children.length
-    const lastPosition = -(860 * (menuUnits/4-1))
-    let newPosition = (pixel + Number(currentPosition)) % Number(860 * menuUnits/4)
-    if (newPosition > 0) {
-        newPosition = lastPosition
+function transePosition(wrapper, direction) {
+    if (direction === 'next') {
+        wrapper.style.transition = 'ease 1s'
+        const firstNode = wrapper.children[0]
+        console.log(wrapper.style.transform.value)
+        let nowPosition = Number(wrapper.style.transform.replace(
+            'translate(', '').replace('px)', '')
+        )
+        const newPosition = nowPosition - 215
+        setTimeout(function () {
+            const animate = () => {
+                if (nowPosition===newPosition) return false
+                wrapper.style.transform = `translate(${nowPosition}px)`
+                nowPosition -= 1
+                animate();
+            }
+            animate()
+        }, 5)
+        wrapper.appendChild(firstNode)
+
+    } else if (direction === 'before') {
+        const menuItems = document.getElementsByClassName('carousel-menu')
+        const lastMenu = menuItems[menuItems.length - 1]
+        const parentNode = lastMenu.parentNode
+        parentNode.insertBefore(lastMenu, menuItems[0])
     }
-    element.style.transform = `translateX(${newPosition}px)`
 }
 
 function nextMenu() {
     const carouselInnerWrapper = document.querySelector('.carousel-inner-wrapper')
-    transePosition(carouselInnerWrapper, -860)
+    transePosition(carouselInnerWrapper, 'next')
 }
 
-function beforeMenu () {
+function beforeMenu() {
     const carouselInnerWrapper = document.querySelector('.carousel-inner-wrapper')
-    transePosition(carouselInnerWrapper, 860)
+    transePosition(carouselInnerWrapper, 'before')
 }
 
 document.querySelector('.carousel-left-btn').addEventListener(

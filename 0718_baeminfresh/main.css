@@ -18,19 +18,20 @@
 }
 
 .carousel-inner-wrapper {
-    background-color: blue;
     margin-left: 50px;
-    position: relative;
     transition: ease 1s;
+    transform: translate(0px);
 }
 
 .carousel-menu {
     float: left;
-    display: inline-block;
+    width: 215px;
+    transition: ease 1s;
+    transform: translate(0px);
 }
 
 .carousel-menu-image {
-    width: 215px;
+    width: 100%;
 }
 
 .carousel-menu-description {
