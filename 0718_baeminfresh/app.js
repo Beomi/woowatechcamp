@@ -8,17 +8,7 @@ slidesPagination.addEventListener('click', function (e) {
     const newLI = document.querySelector(`.s${targetId}`)
 
     if (oldLI === newLI) return false
-    newLI.style.display = ''
-    oldLI.style.display = ''
-
-    oldLI.style.zIndex = 0
-    newLI.style.opacity = 0
-    fadeInOut(newLI, oldLI)
-    oldLI.style.opacity = 0
-    newLI.style.zIndex = 50
-    oldLI.classList.remove('selected')
-    newLI.classList.add('selected')
-
+    fadeInOutWrapper(newLI, oldLI)
 })
 
 slidesPrev.addEventListener('click', function () {
@@ -27,20 +17,10 @@ slidesPrev.addEventListener('click', function () {
     let newLI
     if (oldLI.className.replace('s', '').replace('selected', '') <= 1) {
         newLI = childElementCount[childElementCount.length - 1]
-        console.log(newLI)
     } else {
         newLI = oldLI.previousElementSibling
     }
-    newLI.style.display = ''
-    oldLI.style.display = ''
-
-    oldLI.style.zIndex = 0
-    newLI.style.opacity = 0
-    fadeInOut(newLI, oldLI)
-    oldLI.style.opacity = 0
-    newLI.style.zIndex = 50
-    oldLI.classList.remove('selected')
-    newLI.classList.add('selected')
+    fadeInOutWrapper(newLI, oldLI)
 })
 
 slidesNext.addEventListener('click', function () {
@@ -53,16 +33,7 @@ slidesNext.addEventListener('click', function () {
     } else {
         newLI = oldLI.nextElementSibling
     }
-    newLI.style.display = ''
-    oldLI.style.display = ''
-
-    oldLI.style.zIndex = 0
-    newLI.style.opacity = 0
-    fadeInOut(newLI, oldLI)
-    oldLI.style.opacity = 0
-    newLI.style.zIndex = 50
-    oldLI.classList.remove('selected')
-    newLI.classList.add('selected')
+    fadeInOutWrapper(newLI, oldLI)
 })
 
 function fadeInOut(newLI, oldLI) {
@@ -75,4 +46,16 @@ function fadeInOut(newLI, oldLI) {
         }
         requestAnimationFrame(fade)
     })()
+}
+
+function fadeInOutWrapper(newLI, oldLI) {
+    newLI.style.display = ''
+    oldLI.style.display = ''
+    oldLI.style.zIndex = 0
+    newLI.style.opacity = 0
+    fadeInOut(newLI, oldLI)
+    oldLI.style.opacity = 0
+    newLI.style.zIndex = 50
+    oldLI.classList.remove('selected')
+    newLI.classList.add('selected')
 }
