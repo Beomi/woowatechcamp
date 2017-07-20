@@ -1,6 +1,13 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .carousel-title {
     text-align: center;
     font-size: 200%;
+    font-weight: 800;
 }
 
 .carousel-outer-wrapper {
@@ -59,8 +66,4 @@
 
 .carousel-right-btn {
     right: 0;
-}
-
-.carousel-menu {
-
 }

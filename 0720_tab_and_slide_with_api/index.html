@@ -7,15 +7,16 @@
     <title>배달의민족 슬라이딩~</title>
     <link rel="stylesheet" href="sliding.css">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="tab.css">
 </head>
 <body>
-
 <div class="wrap main_slides_wrap">
     <h2 class="blind">메인배너</h2>
     <div id="main-banners" class="slides_container">
         <div class="bx-wrapper" style="max-width: 100%; margin: 0 auto;">
             <div class="bx-viewport" style="width: 100%; overflow: hidden; height: 420px;">
-                <ul class="main_slides_lst" data-ref_id="main-banners" style="width: auto; position: relative;">
+                <ul class="main_slides_lst" data-ref_id="main-banners"
+                    style="width: auto; position: relative; padding: 0">
                     <li class="s1"
                         style="background-image: url(https://cdn.bmf.kr/banner/main_banner/170710/1499664994146_bb0efd9c4cc6.jpg); float: none; list-style: none; position: absolute; width: 1920px; z-index: 0; ">
                         <a href="https://www.baeminfresh.com/promotion/list.php?cno=5070000&ga_banner=1">
@@ -81,8 +82,8 @@
         </div>
 
         <div class="slides_navi">
-            <a href="#" class="slides_prev" title="이전">이전</a>
-            <a href="#" class="slides_next" title="다음">다음</a>
+            <a href="#/" class="slides_prev" title="이전">이전</a>
+            <a href="#/" class="slides_next" title="다음">다음</a>
         </div>
 
         <ul class="slides_pagination">
@@ -101,6 +102,43 @@
         </ul>
     </div>
 </div>
+
+<h2 class="carousel-title">후기가 증명하는 베스트 반찬</h2>
+
+<div class="tab-wrapper">
+    <nav class="tab-nav">
+        <ul>
+            <li class="tab tab-visible" data-categoryId="17010200">편리한 반찬세트</li>
+            <li class="tab" data-categoryId="17011400">우리아이영양반찬</li>
+            <li class="tab" data-categoryId="17011200">할인특가 세트상품</li>
+            <li class="tab" data-categoryId="17011000">풍성한 고기반찬</li>
+            <li class="tab" data-categoryId="17011100">바다향가득 반찬</li>
+            <li class="tab" data-categoryId="17010300">간편한 덮밥요리</li>
+        </ul>
+    </nav>
+    <!-- TODO: tabGoodsWrapper 안에 innerHTML쓰고 렌더된 템플릿으로 바꾸기 -->
+    <div class="tab-goods-wrapper" id="tabGoodsWrapper">
+        <div class="tab-goods">
+            <img src="https://via.placeholder.com/300x300" alt="" class="tab-goods-img">
+            <p class="tab-goods-description">
+
+            </p>
+        </div>
+        <div class="tab-goods">
+            <img src="https://via.placeholder.com/300x300" alt="" class="tab-goods-img">
+            <p class="tab-goods-description">
+
+            </p>
+        </div>
+        <div class="tab-goods">
+            <img src="https://via.placeholder.com/300x300" alt="" class="tab-goods-img">
+            <p class="tab-goods-description">
+
+            </p>
+        </div>
+    </div>
+</div>
+
 
 <h2 class="carousel-title">캐로우젤 without DOM</h2>
 
