@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="css/sliding.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/tab.css">
+    <link rel="stylesheet" href="css/modal.css">
 </head>
 <body>
 <div class="wrap main_slides_wrap">
-    <h2 class="blind">메인배너</h2>
-    <div id="main-banners" class="slides_container">
+    <h2 class="blind"><img src="https://cdn.bmf.kr/web/common/bmf_logo.png" alt="bamin fresh logo"></h2>
+        <div id="main-banners" class="slides_container">
         <div class="bx-wrapper" style="max-width: 100%; margin: 0 auto;">
             <div class="bx-viewport" style="width: 100%; overflow: hidden; height: 420px;">
                 <ul class="main_slides_lst" data-ref_id="main-banners"
@@ -82,8 +83,8 @@
         </div>
 
         <div class="slides_navi">
-            <a href="#/" class="slides_prev" title="이전">이전</a>
-            <a href="#/" class="slides_next" title="다음">다음</a>
+            <a href="#" class="slides_prev" title="이전">이전</a>
+            <a href="#" class="slides_next" title="다음">다음</a>
         </div>
 
         <ul class="slides_pagination">
@@ -120,31 +121,7 @@
                 <li class="tab" data-categoryId="17010300">간편한 덮밥요리</li>
             </ul>
         </nav>
-        <!-- TODO: tabGoodsWrapper 안에 innerHTML쓰고 렌더된 템플릿으로 바꾸기 -->
         <div class="tab-goods-wrapper" id="tabGoodsWrapper">
-            <div class="tab-goods">
-                <img src="https://via.placeholder.com/600x600" alt="" class="tab-goods-img">
-                <p class="tab-goods-description">
-                    <span class="menu__title">[애슐리투고] 낙지 유자소스비빔면 (반조리) 500g</span><br/>
-                    <span class="menu__detail">상큼한 유자 향이 가득한 여름 별미 </span><br/>
-                    <span class="menu__price-wrapper">
-                        <span class="menu__n-price">7,900</span>
-                    <span class="menu__s-price">7,110<span class="menu__won">원</span></span>
-                    </span>
-                </p>
-            </div>
-            <div class="tab-goods">
-                <img src="https://via.placeholder.com/600x600" alt="" class="tab-goods-img">
-                <p class="tab-goods-description">
-
-                </p>
-            </div>
-            <div class="tab-goods">
-                <img src="https://via.placeholder.com/600x600" alt="" class="tab-goods-img">
-                <p class="tab-goods-description">
-
-                </p>
-            </div>
         </div>
     </div>
 </div>
@@ -214,6 +191,8 @@
     </div>
     <button class="carousel-btn carousel-right-btn">&gt;</button>
 </div>
+
+<div id="hiddenModal"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>

@@ -137,42 +137,77 @@ class Tab {
         this.getTemplate = fetch('/templates/tabContent.html').then(resp => {
             return resp.text()
         })
+        this.getModalTemplate = fetch('/templates/menuDetail.html').then(resp => {
+            return resp.text()
+        })
+        this.hiddenModal = document.querySelector('#hiddenModal')
     }
 
-    getData(type, hash, el) {
+    getData(type, hash, el, func) {
         if (hash) {
             fetch(this.apiBaseUrl + `/woowa/${type}/${hash}`).then(function (res) {
                 return res.json()
             }).then(json => {
-                this.renderTemplate(el, json)
+                func(el, json)
             })
         } else {
             fetch(this.apiBaseUrl + `/woowa/${type}`)
         }
     }
 
-    renderTemplate(el, data) {
-        this.getTemplate.then(template => {
-            const rendered = Mustache.render(template, data)
-            el.innerHTML = rendered
-        })
-    }
-
     registerEvent() {
         const tabNav = document.querySelector('.tab-nav')
+        const tabGoodsWrapper = document.querySelector('#tabGoodsWrapper')
+
         tabNav.addEventListener('click', e => {
             const target = e.target
             if (!target.matches('li')) {
                 return false
             }
-            const tabGoodsWrapper = document.querySelector('#tabGoodsWrapper')
             const tabVisible = document.querySelector('.tab-visible')
             const categoryId = target.dataset.categoryid
 
             tabVisible.classList.remove('tab-visible')
             target.classList.add('tab-visible')
 
-            this.getData('best', categoryId, tabGoodsWrapper)
+            const renderTemplate = (el, data) => {
+                this.getTemplate.then(template => {
+                    const rendered = Mustache.render(template, data)
+                    el.innerHTML = rendered
+                })
+            }
+
+            this.getData('best', categoryId, tabGoodsWrapper, renderTemplate)
+        })
+
+        tabGoodsWrapper.addEventListener('click', e => {
+            const target = e.closest('div.tab-goods')
+            const title = target.querySelector('.menu__title').innerText
+            const hash = target.dataset.hash
+
+            const renderModal = (el, data, title) => {
+                this.getModalTemplate.then(template => {
+                    data['title'] = title
+                    const rendered = Mustache.render(template, data)
+                    el.innerHTML = rendered
+                })
+            }
+
+            this.getData('detail', hash, this.hiddenModal, renderModal.call(this, title))
+
+            const modal = document.querySelector(`#modal_${hash}`)
+            const closeBtn = document.getElementById("myBtn")
+
+            modal.style.display = 'block'
+            closeBtn.onclick = function () {
+                modal.style.display = 'none'
+            }
+            window.onclick = function (e) {
+                if (e.target !== modal) {
+                    modal.style.display = 'none'
+                }
+            }
+
         })
     }
 }
@@ -184,9 +219,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const tab = new Tab()
 
     slide.registerEvent()
-    slide.autoPlay()
+    //slide.autoPlay()
 
     carousel.registerEvent()
 
     tab.registerEvent()
+    const tabGoodsWrapper = document.querySelector('#tabGoodsWrapper')
+    const tabVisible = document.querySelector('.tab-visible')
+    const categoryId = tabVisible.dataset.categoryid
+    tab.getData('best', categoryId, tabGoodsWrapper)
 })
