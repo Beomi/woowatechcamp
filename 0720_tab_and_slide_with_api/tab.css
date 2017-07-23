@@ -1,3 +1,7 @@
+* {
+    font-family: "Nanum Gothic", sans-serif;
+}
+
 ul {
     list-style-type: none;
     padding: 0;
@@ -6,6 +10,11 @@ ul {
 li {
     margin: 0;
     padding: 0;
+}
+
+.best-submenu {
+    background-color: #eee;
+    padding-top: 20px;
 }
 
 .tab-wrapper {
@@ -24,13 +33,18 @@ li {
     margin: 0;
     padding: 0;
     background-color: white;
-    width: 160px;
+    width: 159px;
     height: 50px;
     line-height: 50px;
     text-align: center;
     float: left;
     color: #777;
-    font-weight: 600;
+    border-right: 1px solid #eee;
+}
+
+.tab:nth-last-child(1) {
+    width: 160px;
+    border: none;
 }
 
 .tab.tab-visible {
@@ -40,7 +54,7 @@ li {
 
 .tab-goods-wrapper {
     width: 960px;
-    height: 440px;
+    height: 500px;
 }
 
 .tab-goods {
@@ -48,6 +62,7 @@ li {
     width: 300px;
     height: 430px;
     float: left;
+    background-color: white;
 }
 
 .tab-goods:nth-last-child(1) {
@@ -60,5 +75,8 @@ li {
 }
 
 .tab-goods-description {
-    padding: 18px 20px 15px;
+    padding: 0 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }

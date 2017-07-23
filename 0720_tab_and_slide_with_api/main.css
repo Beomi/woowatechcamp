@@ -7,7 +7,13 @@ html, body {
 .carousel-title {
     text-align: center;
     font-size: 200%;
-    font-weight: 800;
+    font-weight: 600;
+}
+
+.carousel-title > small {
+    font-size: 50%;
+    font-weight: 400;
+    color: #b8b8b8;
 }
 
 .carousel-outer-wrapper {
@@ -36,7 +42,7 @@ html, body {
     transform: translateX(0px);
 }
 
-.carousel-menu-image {
+.carousel-menu__image {
     width: 100%;
 }
 
@@ -66,4 +72,38 @@ html, body {
 
 .carousel-right-btn {
     right: 0;
+}
+
+.menu__title {
+    font-weight: bold;
+    font-size: 110%;
+}
+
+.menu__detail {
+    font-weight: 200;
+    font-size: 80%;
+    color: #666;
+    line-height: 15px;
+}
+
+.menu__price-wrapper {
+    margin-top: 30px;
+    float: right;
+}
+
+.menu__n-price {
+    color: #888;
+    text-decoration: line-through;
+    margin-right: 5px;
+}
+
+.menu__s-price {
+    color: #2ac1bc;
+    font-weight: 800;
+    font-size: 120%;
+}
+
+.menu__won {
+    font-size: 80%;
+    font-weight: normal;
 }

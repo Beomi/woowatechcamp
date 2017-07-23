@@ -103,42 +103,51 @@
     </div>
 </div>
 
-<h2 class="carousel-title">후기가 증명하는 베스트 반찬</h2>
+<div class="best-submenu">
+    <h2 class="carousel-title">
+        <small>베스트셀러</small>
+        <br/>
+        후기가 증명하는 베스트 반찬
+    </h2>
+    <div class="tab-wrapper">
+        <nav class="tab-nav">
+            <ul>
+                <li class="tab tab-visible" data-categoryId="17010200">편리한 반찬세트</li>
+                <li class="tab" data-categoryId="17011400">우리아이영양반찬</li>
+                <li class="tab" data-categoryId="17011200">할인특가 세트상품</li>
+                <li class="tab" data-categoryId="17011000">풍성한 고기반찬</li>
+                <li class="tab" data-categoryId="17011100">바다향가득 반찬</li>
+                <li class="tab" data-categoryId="17010300">간편한 덮밥요리</li>
+            </ul>
+        </nav>
+        <!-- TODO: tabGoodsWrapper 안에 innerHTML쓰고 렌더된 템플릿으로 바꾸기 -->
+        <div class="tab-goods-wrapper" id="tabGoodsWrapper">
+            <div class="tab-goods">
+                <img src="https://via.placeholder.com/600x600" alt="" class="tab-goods-img">
+                <p class="tab-goods-description">
+                    <span class="menu__title">[애슐리투고] 낙지 유자소스비빔면 (반조리) 500g</span><br/>
+                    <span class="menu__detail">상큼한 유자 향이 가득한 여름 별미 </span><br/>
+                    <span class="menu__price-wrapper">
+                        <span class="menu__n-price">7,900</span>
+                    <span class="menu__s-price">7,110<span class="menu__won">원</span></span>
+                    </span>
+                </p>
+            </div>
+            <div class="tab-goods">
+                <img src="https://via.placeholder.com/600x600" alt="" class="tab-goods-img">
+                <p class="tab-goods-description">
 
-<div class="tab-wrapper">
-    <nav class="tab-nav">
-        <ul>
-            <li class="tab tab-visible" data-categoryId="17010200">편리한 반찬세트</li>
-            <li class="tab" data-categoryId="17011400">우리아이영양반찬</li>
-            <li class="tab" data-categoryId="17011200">할인특가 세트상품</li>
-            <li class="tab" data-categoryId="17011000">풍성한 고기반찬</li>
-            <li class="tab" data-categoryId="17011100">바다향가득 반찬</li>
-            <li class="tab" data-categoryId="17010300">간편한 덮밥요리</li>
-        </ul>
-    </nav>
-    <!-- TODO: tabGoodsWrapper 안에 innerHTML쓰고 렌더된 템플릿으로 바꾸기 -->
-    <div class="tab-goods-wrapper" id="tabGoodsWrapper">
-        <div class="tab-goods">
-            <img src="https://via.placeholder.com/300x300" alt="" class="tab-goods-img">
-            <p class="tab-goods-description">
+                </p>
+            </div>
+            <div class="tab-goods">
+                <img src="https://via.placeholder.com/600x600" alt="" class="tab-goods-img">
+                <p class="tab-goods-description">
 
-            </p>
-        </div>
-        <div class="tab-goods">
-            <img src="https://via.placeholder.com/300x300" alt="" class="tab-goods-img">
-            <p class="tab-goods-description">
-
-            </p>
-        </div>
-        <div class="tab-goods">
-            <img src="https://via.placeholder.com/300x300" alt="" class="tab-goods-img">
-            <p class="tab-goods-description">
-
-            </p>
+                </p>
+            </div>
         </div>
     </div>
 </div>
-
 
 <h2 class="carousel-title">캐로우젤 without DOM</h2>
 
@@ -147,51 +156,58 @@
     <div class="carousel-wrapper">
         <div class="carousel-inner-wrapper">
             <div class="carousel-menu">
-                <img class="carousel-menu-image" src="https://via.placeholder.com/215x215">
-                <p class="carousel-menu-description">안녕아년1</p>
+                <img class="carousel-menu__image" src="https://via.placeholder.com/215x215">
+                <p class="carousel-menu-description">
+                    <span class="menu__title">[애슐리투고] 낙지 유자소스비빔면 (반조리) 500g</span>
+                    <span class="menu__detail">상큼한 유자 향이 가득한 여름 별미 </span>
+                    <span class="menu__price-wrapper">
+                    <span class="menu__n-price">7,900</span>
+                    <span class="menu__s-price">7,110<span class="menu__won">원</span></span>
+                    </span>
+                </p>
             </div>
             <div class="carousel-menu">
-                <img class="carousel-menu-image" src="https://via.placeholder.com/215x215">
+                <img class="carousel-menu__image" src="https://via.placeholder.com/215x215">
                 <p class="carousel-menu-description">안녕아년2</p>
             </div>
             <div class="carousel-menu">
-                <img class="carousel-menu-image" src="https://via.placeholder.com/215x215">
+                <img class="carousel-menu__image" src="https://via.placeholder.com/215x215">
                 <p class="carousel-menu-description">안녕아년3</p>
             </div>
             <div class="carousel-menu">
-                <img class="carousel-menu-image" src="https://via.placeholder.com/215x215">
+                <img class="carousel-menu__image" src="https://via.placeholder.com/215x215">
                 <p class="carousel-menu-description">안녕아년4</p>
             </div>
             <div class="carousel-menu">
-                <img class="carousel-menu-image" src="https://via.placeholder.com/215x215">
+                <img class="carousel-menu__image" src="https://via.placeholder.com/215x215">
                 <p class="carousel-menu-description">안녕아년5</p>
             </div>
             <div class="carousel-menu">
-                <img class="carousel-menu-image" src="https://via.placeholder.com/215x215">
+                <img class="carousel-menu__image" src="https://via.placeholder.com/215x215">
                 <p class="carousel-menu-description">안녕아년6</p>
             </div>
             <div class="carousel-menu">
-                <img class="carousel-menu-image" src="https://via.placeholder.com/215x215">
+                <img class="carousel-menu__image" src="https://via.placeholder.com/215x215">
                 <p class="carousel-menu-description">안녕아년7</p>
             </div>
             <div class="carousel-menu">
-                <img class="carousel-menu-image" src="https://via.placeholder.com/215x215">
+                <img class="carousel-menu__image" src="https://via.placeholder.com/215x215">
                 <p class="carousel-menu-description">안녕아년8</p>
             </div>
             <div class="carousel-menu">
-                <img class="carousel-menu-image" src="https://via.placeholder.com/215x215">
+                <img class="carousel-menu__image" src="https://via.placeholder.com/215x215">
                 <p class="carousel-menu-description">안녕아년9</p>
             </div>
             <div class="carousel-menu">
-                <img class="carousel-menu-image" src="https://via.placeholder.com/215x215">
+                <img class="carousel-menu__image" src="https://via.placeholder.com/215x215">
                 <p class="carousel-menu-description">안녕아년10</p>
             </div>
             <div class="carousel-menu">
-                <img class="carousel-menu-image" src="https://via.placeholder.com/215x215">
+                <img class="carousel-menu__image" src="https://via.placeholder.com/215x215">
                 <p class="carousel-menu-description">안녕아년11</p>
             </div>
             <div class="carousel-menu">
-                <img class="carousel-menu-image" src="https://via.placeholder.com/215x215">
+                <img class="carousel-menu__image" src="https://via.placeholder.com/215x215">
                 <p class="carousel-menu-description">안녕아년12</p>
             </div>
         </div>
@@ -200,7 +216,7 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 <script src="app.js"></script>
 
 </body>
