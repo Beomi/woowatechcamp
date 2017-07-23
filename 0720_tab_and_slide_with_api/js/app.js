@@ -163,7 +163,7 @@ class Tab {
 }
 
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
     const slide = new Slide()
     const carousel = new Carousel(3)
     const tab = new Tab()
