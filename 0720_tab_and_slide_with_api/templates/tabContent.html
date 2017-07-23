@@ -1,13 +1,13 @@
-<script id="tabContent" type="text/x-handlebars-template">
-    <div class="tab-goods">
-        <img src="{{ item.image }}" alt="{{ item.alt }}" class="tab-goods-img">
-        <p class="tab-goods-description">
-            <span class="menu__title">{{ item.title }}</span><br/>
-            <span class="menu__detail">{{ item.description }}</span><br/>
-            <span class="menu__price-wrapper">
-            <span class="menu__n-price">{{ item.n_price }}</span>
-        <span class="menu__s-price">{{ item.s_price }}</span>
+{{#items}}
+<div class="tab-goods">
+    <img src="{{ image }}" alt="{{ alt }}" class="tab-goods-img">
+    <p class="tab-goods-description">
+        <span class="menu__title">{{ title }}</span><br/>
+        <span class="menu__detail">{{ description }}</span><br/>
+        <span class="menu__price-wrapper">
+            <span class="menu__n-price">{{ n_price }}</span>
+        <span class="menu__s-price">{{ s_price }}</span>
         </span>
-        </p>
-    </div>
-</script>
+    </p>
+</div>
+{{/items}}

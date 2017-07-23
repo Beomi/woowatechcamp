@@ -122,10 +122,10 @@ class Carousel {
 
     registerEvent() {
         this.leftBtn.addEventListener(
-            'click', this.beforeMenu.bind(this)
+            'click', _.throttle(this.beforeMenu.bind(this), 1200)
         )
         this.rightBtn.addEventListener(
-            'click', this.nextMenu.bind(this)
+            'click', _.throttle(this.nextMenu.bind(this), 1200)
         )
     }
 }
@@ -133,32 +133,47 @@ class Carousel {
 
 class Tab {
     constructor() {
-        this.template = function () {
-            fetch('/templates/tabContent.html').then(function (response) {
-                return response.querySelector('#tabContent').innerHTML
-            })
-        }
         this.apiBaseUrl = 'http://52.78.212.27:8080'
+        this.getTemplate = fetch('/templates/tabContent.html').then(resp => {
+            return resp.text()
+        })
     }
 
-    getData(type, hash) {
+    getData(type, hash, el) {
         if (hash) {
-            fetch(this.apiBaseUrl + `/woowa/${type}/${hash}`)
+            fetch(this.apiBaseUrl + `/woowa/${type}/${hash}`).then(function (res) {
+                return res.json()
+            }).then(json => {
+                this.renderTemplate(el, json)
+            })
         } else {
             fetch(this.apiBaseUrl + `/woowa/${type}`)
         }
     }
 
-    renderTemplate(data) {
-
-    }
-
-    updateDocument() {
-
+    renderTemplate(el, data) {
+        this.getTemplate.then(template => {
+            const rendered = Mustache.render(template, data)
+            el.innerHTML = rendered
+        })
     }
 
     registerEvent() {
+        const tabNav = document.querySelector('.tab-nav')
+        tabNav.addEventListener('click', e => {
+            const target = e.target
+            if (!target.matches('li')) {
+                return false
+            }
+            const tabGoodsWrapper = document.querySelector('#tabGoodsWrapper')
+            const tabVisible = document.querySelector('.tab-visible')
+            const categoryId = target.dataset.categoryid
 
+            tabVisible.classList.remove('tab-visible')
+            target.classList.add('tab-visible')
+
+            this.getData('best', categoryId, tabGoodsWrapper)
+        })
     }
 }
 
