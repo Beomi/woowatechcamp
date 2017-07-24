@@ -2,9 +2,17 @@
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p>{{ data.product_description }}</p>
-        {#data}
-        <img src="{top_image}" alt="">
-        {/data}
+        <h2>{{ title }}</h2>
+        <h4>{{ data.product_description }}</h4>
+        <img src="{{data.top_image}}" width="100%">
+        <h3>상세설명</h3>
+        <p>{{data.delivery_info}}</p>
+        <p>배송료: {{data.delivery_fee}}</p>
+        <p>적립포인트: {{data.point}}</p>
+        <h3>가격: {{data.prices}}</h3>
+        {{#data.detail_section}}
+        <img src="{{ . }}" width="100%">
+        {{/data.detail_section}}
+
     </div>
 </div>

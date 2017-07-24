@@ -133,6 +133,7 @@ class Carousel {
 
 class Tab {
     constructor() {
+        this.title = ''
         this.apiBaseUrl = 'http://52.78.212.27:8080'
         this.getTemplate = fetch('/templates/tabContent.html').then(resp => {
             return resp.text()
@@ -141,6 +142,33 @@ class Tab {
             return resp.text()
         })
         this.hiddenModal = document.querySelector('#hiddenModal')
+        this.renderTemplate = (el, data) => {
+            this.getTemplate.then(template => {
+                const rendered = Mustache.render(template, data)
+                el.innerHTML = rendered
+            })
+        }
+        this.renderModal = (el, data) => {
+            this.getModalTemplate.then(template => {
+                data['title'] = this.title
+
+                const hash = data.hash
+                const rendered = Mustache.render(template, data)
+                el.innerHTML = rendered
+
+                const modal = document.getElementById(`modal_${hash}`)
+                const closeBtn = document.querySelector('span.close')
+                modal.style.display = 'block'
+                closeBtn.addEventListener('click', function () {
+                    modal.style.display = 'none'
+                })
+                window.onclick = function (e) {
+                    if (e.target == modal) {
+                        modal.style.display = 'none'
+                    }
+                }
+            })
+        }
     }
 
     getData(type, hash, el, func) {
@@ -155,59 +183,39 @@ class Tab {
         }
     }
 
+    clickTabListener(e, target) {
+        if (!target) target = e.target
+        if (!target.matches('li')) {
+            return false
+        }
+        const tabVisible = document.querySelector('.tab-visible')
+        const tabGoodsWrapper = document.querySelector('#tabGoodsWrapper')
+        const categoryId = target.dataset.categoryid
+
+        tabVisible.classList.remove('tab-visible')
+        target.classList.add('tab-visible')
+
+        this.getData('best', categoryId, tabGoodsWrapper, this.renderTemplate)
+    }
+
+    clickModalListener (e) {
+        const target = e.target.closest('div.tab-goods')
+        const hash = target.dataset.hash
+
+        this.title = target.querySelector('.menu__title').innerText
+
+        this.getData('detail', hash, this.hiddenModal, this.renderModal)
+    }
+
     registerEvent() {
         const tabNav = document.querySelector('.tab-nav')
         const tabGoodsWrapper = document.querySelector('#tabGoodsWrapper')
 
         tabNav.addEventListener('click', e => {
-            const target = e.target
-            if (!target.matches('li')) {
-                return false
-            }
-            const tabVisible = document.querySelector('.tab-visible')
-            const categoryId = target.dataset.categoryid
-
-            tabVisible.classList.remove('tab-visible')
-            target.classList.add('tab-visible')
-
-            const renderTemplate = (el, data) => {
-                this.getTemplate.then(template => {
-                    const rendered = Mustache.render(template, data)
-                    el.innerHTML = rendered
-                })
-            }
-
-            this.getData('best', categoryId, tabGoodsWrapper, renderTemplate)
+            this.clickTabListener(e)
         })
-
         tabGoodsWrapper.addEventListener('click', e => {
-            const target = e.closest('div.tab-goods')
-            const title = target.querySelector('.menu__title').innerText
-            const hash = target.dataset.hash
-
-            const renderModal = (el, data, title) => {
-                this.getModalTemplate.then(template => {
-                    data['title'] = title
-                    const rendered = Mustache.render(template, data)
-                    el.innerHTML = rendered
-                })
-            }
-
-            this.getData('detail', hash, this.hiddenModal, renderModal.call(this, title))
-
-            const modal = document.querySelector(`#modal_${hash}`)
-            const closeBtn = document.getElementById("myBtn")
-
-            modal.style.display = 'block'
-            closeBtn.onclick = function () {
-                modal.style.display = 'none'
-            }
-            window.onclick = function (e) {
-                if (e.target !== modal) {
-                    modal.style.display = 'none'
-                }
-            }
-
+            this.clickModalListener(e)
         })
     }
 }
@@ -224,8 +232,6 @@ document.addEventListener('DOMContentLoaded', function () {
     carousel.registerEvent()
 
     tab.registerEvent()
-    const tabGoodsWrapper = document.querySelector('#tabGoodsWrapper')
     const tabVisible = document.querySelector('.tab-visible')
-    const categoryId = tabVisible.dataset.categoryid
-    tab.getData('best', categoryId, tabGoodsWrapper)
+    tab.clickTabListener(null, tabVisible)
 })
