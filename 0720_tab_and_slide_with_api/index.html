@@ -13,7 +13,7 @@
 <body>
 <div class="wrap main_slides_wrap">
     <h2 class="blind"><img src="https://cdn.bmf.kr/web/common/bmf_logo.png" alt="bamin fresh logo"></h2>
-        <div id="main-banners" class="slides_container">
+    <div id="main-banners" class="slides_container">
         <div class="bx-wrapper" style="max-width: 100%; margin: 0 auto;">
             <div class="bx-viewport" style="width: 100%; overflow: hidden; height: 420px;">
                 <ul class="main_slides_lst" data-ref_id="main-banners"
@@ -126,20 +126,23 @@
     </div>
 </div>
 
-<h2 class="carousel-title">캐로우젤 without DOM</h2>
-
+<h2 class="carousel-title">
+    <small>밑반찬</small>
+    <br/>
+    언제 먹어도 든든한 밑반찬
+</h2>
 <div class="carousel-outer-wrapper">
     <button class="carousel-btn carousel-left-btn">&lt;</button>
     <div class="carousel-wrapper">
         <div class="carousel-inner-wrapper">
             <div class="carousel-menu">
-                <img class="carousel-menu__image" src="https://via.placeholder.com/215x215">
-                <p class="carousel-menu-description">
-                    <span class="menu__title">[애슐리투고] 낙지 유자소스비빔면 (반조리) 500g</span>
-                    <span class="menu__detail">상큼한 유자 향이 가득한 여름 별미 </span>
+                <img src="https://via.placeholder.com/400x400" alt="{{ alt }}" class="tab-goods-img">
+                <p class="tab-goods-description">
+                    <span class="menu__title">{{ title }}</span><br/>
+                    <span class="menu__detail">{{ description }}</span><br/>
                     <span class="menu__price-wrapper">
-                    <span class="menu__n-price">7,900</span>
-                    <span class="menu__s-price">7,110<span class="menu__won">원</span></span>
+                    <span class="menu__n-price">{{ n_price }}</span>
+                    <span class="menu__s-price">{{ s_price }}</span>
                     </span>
                 </p>
             </div>

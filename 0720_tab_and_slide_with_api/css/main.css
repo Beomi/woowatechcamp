@@ -37,9 +37,17 @@ html, body {
 
 .carousel-menu {
     float: left;
-    width: 215px;
+    width: 200px;
+    margin-right: 15px;
     transition: ease 1s;
     transform: translateX(0px);
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.carousel-menu:nth-last-child(1) {
+    margin-right: 0;
 }
 
 .carousel-menu__image {
@@ -49,8 +57,9 @@ html, body {
 .carousel-menu-description {
     margin: 0;
     padding: 0;
-    width: 215px;
+    width: 100%;
     text-align: center;
+    text-overflow: ellipsis;
 }
 
 .carousel-btn {

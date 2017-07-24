@@ -85,6 +85,15 @@ class Carousel {
         this.carouselCount = carouselCount
         this.leftBtn = document.querySelector('.carousel-left-btn')
         this.rightBtn = document.querySelector('.carousel-right-btn')
+        this.apiBaseUrl = 'http://52.78.212.27:8080'
+        this.hiddenModal = document.querySelector('#hiddenModal')
+        this.title = ''
+        this.getTemplate = fetch('/templates/tabContent.html').then(resp => {
+            return resp.text()
+        })
+        this.getModalTemplate = fetch('/templates/menuDetail.html').then(resp => {
+            return resp.text()
+        })
     }
 
     transePosition(wrapper, direction, moveCount) {
