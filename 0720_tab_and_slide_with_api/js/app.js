@@ -44,12 +44,12 @@ class Slide {
 
     autoPlay(a) {
         if (this.slidesNext.click()) {
-            return;
+            return false
         }
         setInterval(this.arrowNext(), 2900);
         setTimeout(() => {
-            this.autoPlay();
-        }, 3000);
+            this.autoPlay()
+        }, 3000)
     }
 
     registerEvent() {
@@ -85,15 +85,42 @@ class Carousel {
         this.carouselCount = carouselCount
         this.leftBtn = document.querySelector('.carousel-left-btn')
         this.rightBtn = document.querySelector('.carousel-right-btn')
-        this.apiBaseUrl = 'http://52.78.212.27:8080'
         this.hiddenModal = document.querySelector('#hiddenModal')
+        this.apiBaseUrl = 'http://52.78.212.27:8080'
         this.title = ''
-        this.getTemplate = fetch('/templates/tabContent.html').then(resp => {
+        this.getTemplate = fetch('/templates/carouselContent.html').then(resp => {
             return resp.text()
         })
         this.getModalTemplate = fetch('/templates/menuDetail.html').then(resp => {
             return resp.text()
         })
+        this.renderTemplate = (el, data) => {
+            this.getTemplate.then(template => {
+                const rendered = Mustache.render(template, data)
+                el.innerHTML = rendered
+            })
+        }
+        this.renderModal = (el, data) => {
+            this.getModalTemplate.then(template => {
+                data['title'] = this.title
+
+                const hash = data.hash
+                const rendered = Mustache.render(template, data)
+                el.innerHTML = rendered
+
+                const modal = document.getElementById(`modal_${hash}`)
+                const closeBtn = document.querySelector('span.close')
+                modal.style.display = 'block'
+                closeBtn.addEventListener('click', function () {
+                    modal.style.display = 'none'
+                })
+                window.onclick = function (e) {
+                    if (e.target === modal) {
+                        modal.style.display = 'none'
+                    }
+                }
+            })
+        }
     }
 
     transePosition(wrapper, direction, moveCount) {
@@ -127,6 +154,19 @@ class Carousel {
     beforeMenu() {
         const carouselWrapper = document.querySelector('.carousel-wrapper')
         this.transePosition(carouselWrapper, 'before', this.carouselCount)
+    }
+
+    // Modal for each menu
+    getData(type, hash, el, func) {
+        if (hash) {
+            fetch(this.apiBaseUrl + `/woowa/${type}/${hash}`).then(function (res) {
+                return res.json()
+            }).then(json => {
+                func(el, json)
+            })
+        } else {
+            fetch(this.apiBaseUrl + `/woowa/${type}`)
+        }
     }
 
     registerEvent() {
@@ -172,7 +212,7 @@ class Tab {
                     modal.style.display = 'none'
                 })
                 window.onclick = function (e) {
-                    if (e.target == modal) {
+                    if (e.target === modal) {
                         modal.style.display = 'none'
                     }
                 }
