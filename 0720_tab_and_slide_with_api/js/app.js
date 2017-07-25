@@ -260,9 +260,7 @@ class Tab {
         const tabNav = document.querySelector('.tab-nav')
         const tabGoodsWrapper = document.querySelector('#tabGoodsWrapper')
 
-        tabNav.addEventListener('click', e => {
-            this.clickTabListener(e)
-        })
+        tabNav.addEventListener('click', this.clickTabListener)
         tabGoodsWrapper.addEventListener('click', e => {
             this.clickModalListener(e)
         })
