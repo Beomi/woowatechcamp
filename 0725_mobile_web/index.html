@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        #sliderWrapper {
+            margin-top: 50px;
+            width: 500%;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: inline-block;
+            text-align: center;
+            line-height: 200px;
+            font-size: 30px;
+            width: 20%;
+            height: 200px;
+        }
+
+        .viewPort {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<div class="viewPort">
+    <div id="sliderWrapper">
+        <div style=" background-color: #3ed8a5;" class="slider">1</div>
+        <div style=" background-color: #d8763a;" class="slider">2</div>
+        <div style=" background-color: #d8d242;" class="slider">3</div>
+        <div style=" background-color: #5c52d8;" class="slider">4</div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
