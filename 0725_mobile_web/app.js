@@ -41,7 +41,7 @@ class Slider {
             console.log(maxPosition)
             let newWrapperPosition = 0
 
-            this.sliderWrapper.style.transition = 'ease 1s'
+            this.sliderWrapper.style.transition = 'ease 0.5s'
 
             if ((Math.abs(distance)) > (windowWidth / 10)){
                 if (distance < 0) {
