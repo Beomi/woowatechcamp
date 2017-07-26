@@ -16,24 +16,20 @@ class Slider {
     }
 
     moveSliderWrapper(movingPixel) {
-        if (movingPixel > 0) {
-            return false
-        }
         this.sliderWrapper.style.transform = `translateX(${movingPixel}px)`
     }
 
     setEventListener() {
         this.viewPort.addEventListener('touchstart', e => {
             e.preventDefault()
-            this.sliderWrapper.style.transition = null
             this.currentWrapperPosition = 0 || Number(this.sliderWrapper.style.transform.replace('translateX(', '').replace('px)', ''))
             const newPosition = e.changedTouches[0].screenX
             this.setFirstXPosition(newPosition)
         })
         this.viewPort.addEventListener('touchmove', e => {
             e.preventDefault()
+            this.sliderWrapper.style.transition = null
             const newPixel = e.changedTouches[0].screenX
-            console.log(this.currentWrapperPosition + this.getDistance(newPixel))
             this.moveSliderWrapper(
                 this.currentWrapperPosition + this.getDistance(newPixel)
             )
@@ -41,17 +37,23 @@ class Slider {
         this.viewPort.addEventListener('touchend', e => {
             const windowWidth = parseInt(window.innerWidth)
             const distance = this.getDistance(e.changedTouches[0].screenX)
+            const maxPosition = -(window.innerWidth * (this.sliderWrapper.children.length))
+            console.log(maxPosition)
+            let newWrapperPosition = 0
+
             this.sliderWrapper.style.transition = 'ease 1s'
 
-            if ((Math.abs(distance)) > (windowWidth / 5)) {
+            if ((Math.abs(distance)) > (windowWidth / 10)){
                 if (distance < 0) {
-                    this.currentWrapperPosition = this.currentWrapperPosition - windowWidth
+                    newWrapperPosition = this.currentWrapperPosition - windowWidth
                 } else if (distance > 0) {
-                    this.currentWrapperPosition = this.currentWrapperPosition + windowWidth
-                } else {
-                    return;
+                    newWrapperPosition = this.currentWrapperPosition + windowWidth
                 }
-                this.sliderWrapper.style.transform = `translateX(${this.currentWrapperPosition}px)`
+                if ((newWrapperPosition >= 0) || (newWrapperPosition <= maxPosition)) {
+                    this.sliderWrapper.style.transform = `translateX(${this.currentWrapperPosition}px)`
+                    return false
+                }
+                this.sliderWrapper.style.transform = `translateX(${newWrapperPosition}px)`
             } else {
                 this.sliderWrapper.style.transform = `translateX(${this.currentWrapperPosition}px)`
             }
