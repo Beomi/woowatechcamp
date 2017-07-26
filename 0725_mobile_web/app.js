@@ -49,7 +49,7 @@ class Slider {
                 } else if (distance > 0) {
                     newWrapperPosition = this.currentWrapperPosition + windowWidth
                 }
-                if ((newWrapperPosition >= 0) || (newWrapperPosition <= maxPosition)) {
+                if ((newWrapperPosition > 0) || (newWrapperPosition <= maxPosition)) {
                     this.sliderWrapper.style.transform = `translateX(${this.currentWrapperPosition}px)`
                     return false
                 }
