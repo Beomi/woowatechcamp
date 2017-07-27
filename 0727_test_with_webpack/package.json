@@ -1,0 +1,19 @@
+{
+  "name": "sampleproject",
+  "version": "1.0.0",
+  "description": "hello, this is sample.",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "css-loader": "^0.28.4",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.4.1"
+  },
+  "scripts": {
+    "build": "webpack",
+    "runserver": "webpack-dev-server --inline"
+  }
+}
