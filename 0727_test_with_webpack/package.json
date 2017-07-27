@@ -8,13 +8,18 @@
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
+    "chai": "^4.1.0",
     "css-loader": "^0.28.4",
+    "mocha": "^3.4.2",
+    "mocha-loader": "^1.1.1",
     "style-loader": "^0.18.2",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1"
   },
   "scripts": {
     "build": "webpack",
-    "runserver": "webpack-dev-server --inline"
+    "devbuild": "webpack --config webpack.tests.config.js",
+    "runserver": "webpack-dev-server --inline",
+    "devserver": "webpack-dev-server --inline --config webpack.tests.config.js"
   }
 }
